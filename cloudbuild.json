@@ -10,6 +10,6 @@
     "us-central1-docker.pkg.dev/$PROJECT_ID/quickstart-docker-repo/quickstart-image:tag1"
   ],
   "options": {
-    "logging": "NONE"
+    "logging": "CLOUD_LOGGING_ONLY"
   }
 }
