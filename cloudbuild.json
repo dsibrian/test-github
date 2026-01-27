@@ -2,12 +2,36 @@
   "steps": [
     {
       "name": "gcr.io/cloud-builders/docker",
-      "script": "docker build -t us-central1-docker.pkg.dev/$PROJECT_ID/quickstart-docker-repo/quickstart-image:tag1 .",
-      "automapSubstitutions": true
+      "args": [
+        "build",
+        "-t",
+        "us-central1-docker.pkg.dev/dsibrian-dev/quickstart-docker-repo/quickstart-image",
+        "."
+      ]
+    },
+    {
+      "name": "gcr.io/cloud-builders/docker",
+      "args": [
+        "push",
+        "us-central1-docker.pkg.dev/dsibrian-dev/quickstart-docker-repo/quickstart-image"
+      ]
+    },
+    {
+      "name": "gcr.io/google.com/cloudsdktool/cloud-sdk",
+      "entrypoint": "gcloud",
+      "args": [
+        "run",
+        "deploy",
+        "test-github",
+        "--image",
+        "us-central1-docker.pkg.dev/dsibrian-dev/quickstart-docker-repo/quickstart-image",
+        "--region",
+        "us-central1"
+      ]
     }
   ],
   "images": [
-    "us-central1-docker.pkg.dev/$PROJECT_ID/quickstart-docker-repo/quickstart-image:tag1"
+    "us-central1-docker.pkg.dev/dsibrian-dev/quickstart-docker-repo/quickstart-image"
   ],
   "options": {
     "logging": "CLOUD_LOGGING_ONLY"
