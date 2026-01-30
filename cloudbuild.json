@@ -34,7 +34,10 @@
     "us-central1-docker.pkg.dev/dsibrian-dev/quickstart-docker-repo/quickstart-image"
   ],
   "options": {
-    "logging": "CLOUD_LOGGING_ONLY"
+    "logging": "CLOUD_LOGGING_ONLY",
+    "pool" : {
+      "name" : "projects/dsibrian-dev/locations/us-central1/workerPools/test-privatepool"
+    }
   }
 }
 
